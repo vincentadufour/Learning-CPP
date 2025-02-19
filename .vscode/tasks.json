@@ -2,7 +2,7 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "C/C++: g++.exe build active file",
+            "label": "C/C++: build active file",
             "type": "shell",
             "command": "g++",
             "args": [
@@ -10,16 +10,24 @@
                 "-Werror",
                 "${file}",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}.exe"
+                "${fileDirname}/${fileBasenameNoExtension}"
             ],
+            "windows": {
+                "command": "g++.exe",
+                "args": [
+                    "-g",
+                    "-Werror",
+                    "${file}",
+                    "-o",
+                    "${fileDirname}/${fileBasenameNoExtension}.exe"
+                ]
+            },
             "group": {
                 "kind": "build",
                 "isDefault": true
             },
-            "problemMatcher": [
-                "$gcc"
-            ],
-            "detail": "Generated task for building C++ files"
+            "problemMatcher": ["$gcc"],
+            "detail": "Compiler path adjusted for Windows and Linux"
         }
     ]
 }
